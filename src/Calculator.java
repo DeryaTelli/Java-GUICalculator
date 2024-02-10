@@ -10,57 +10,169 @@ public class Calculator extends JFrame {
     private JButton zero;
     private JButton eight;
     private JButton two;
-    private JButton fifth;
-    private JButton comma;
+    private JButton five;
+    private JButton equal;
     private JButton nine;
     private JButton three;
     private JButton six;
-    private JButton multiplication;
+    private JButton cbutton;
     private JButton divide;
+    private JButton multi;
     private JButton extraction;
-    private JButton collection;
     private JTextField textNumber1;
-    private JTextField textNumber2;
-    private JLabel number1;
-    private JLabel number2;
-    private JTextField textField3;
-    private JLabel result;
+    private JButton collection;
+    private JLabel label;
+    private double answer ,number;
+    int operation;
 
-    public Calculator(){
+    public void calculate(){
+        switch (operation){
+            case 1:
+                answer=number+Double.parseDouble(textNumber1.getText());
+                textNumber1.setText(Double.toString(answer));
+                break;
+            case 2:
+                answer=number-Double.parseDouble(textNumber1.getText());
+                textNumber1.setText(Double.toString(answer));
+                break;
+            case 3:
+                answer=number/Double.parseDouble(textNumber1.getText());
+                textNumber1.setText(Double.toString(answer));
+                break;
+            case 4:
+                answer=number*Double.parseDouble(textNumber1.getText());
+                textNumber1.setText(Double.toString(answer));
+                break;
+        }
+    }
+
+    public void getValue(ActionEvent e){
+        textNumber1.setText(textNumber1.getText()+e.getActionCommand());
+        
+    }
+    public Calculator() {
         add(panel1);
-        setSize(500,400);
+        setTitle("Calculator");
+        setSize(350, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        extraction.addActionListener(new ActionListener() {
+
+        zero.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double a=Double.parseDouble(textNumber1.getText());
-                double b=Double.parseDouble(textNumber2.getText());
-                textField3.setText(String.valueOf(a-b));
+               getValue(e);
+            }
+        });
+        one.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        two.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        three.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        four.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        five.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        six.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        seven.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        eight.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        nine.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getValue(e);
+            }
+        });
+        cbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textNumber1.setText("");
             }
         });
         collection.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double a=Double.parseDouble(textNumber1.getText());
-                double b=Double.parseDouble(textNumber2.getText());
-                textField3.setText(String.valueOf(a+b));
+
+            }
+        });
+        collection.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                number=Double.parseDouble(textNumber1.getText());
+                operation=1;
+                textNumber1.setText("");
+                label.setText(number+e.getActionCommand());
+
+            }
+        });
+        extraction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                number=Double.parseDouble(textNumber1.getText());
+                operation=2;
+                textNumber1.setText("");
+                label.setText(number+e.getActionCommand());
+            }
+        });
+        multi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                number=Double.parseDouble(textNumber1.getText());
+                operation=4;
+                textNumber1.setText("");
+                label.setText(number+e.getActionCommand());
             }
         });
         divide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double a=Double.parseDouble(textNumber1.getText());
-                double b=Double.parseDouble(textNumber2.getText());
-                textField3.setText(String.valueOf(a/b));
+                number=Double.parseDouble(textNumber1.getText());
+                operation=3;
+                textNumber1.setText("");
+                label.setText(number+e.getActionCommand());
             }
         });
-        multiplication.addActionListener(new ActionListener() {
+        equal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double a=Double.parseDouble(textNumber1.getText());
-                double b=Double.parseDouble(textNumber2.getText());
-                textField3.setText(String.valueOf(a*b));
+                calculate();
+                label.setText("");
             }
         });
     }
+
 }
+
